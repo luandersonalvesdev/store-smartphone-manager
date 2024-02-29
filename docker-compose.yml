@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend-psel-lexartlabs
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    networks:
+      - psel-lexartlabs-network
+
+  db:
+    image: postgres:16.2
+    restart: always
+    container_name: db-psel-lexartlabs
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+    networks:
+      - psel-lexartlabs-network
+
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend-psel-lexartlabs
+  #   tty: true
+  #   stdin_open: true
+  #   restart: always
+  #   volumes:
+  #     - ./frontend:/frontend
+  #   ports:
+  #     - 3001:3001
+  #   networks:
+  #     - psel-lexartlabs-network
+
+networks:
+  psel-lexartlabs-network:
+    driver: bridge
