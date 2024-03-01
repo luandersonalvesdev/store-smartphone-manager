@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginRoute, signupRoute } = require('./routes');
+const { loginRoute, signupRoute, dashboardRoute } = require('./routes');
 
 const app = express();
 
@@ -11,5 +11,6 @@ app.get('/', (_req, res) => {
 
 app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
+app.use('/dashboard', dashboardRoute);
 
 module.exports = app;
