@@ -30,18 +30,18 @@ services:
     networks:
       - psel-lexartlabs-network
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: frontend-psel-lexartlabs
-  #   tty: true
-  #   stdin_open: true
-  #   restart: always
-  #   volumes:
-  #     - ./frontend:/frontend
-  #   ports:
-  #     - 3001:3001
-  #   networks:
-  #     - psel-lexartlabs-network
+  frontend:
+    build: ./frontend
+    container_name: frontend-psel-lexartlabs
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3000:3000
+    networks:
+      - psel-lexartlabs-network
 
 networks:
   psel-lexartlabs-network:
