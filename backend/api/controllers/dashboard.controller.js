@@ -6,6 +6,14 @@ const getAllProducts = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const createProduct = async (req, res) => {
+  const { user } = req.payload;
+  const products = req.body;
+  const { status, data } = await dashboardService.createProduct(user, products);
+  return res.status(status).json(data);
+};
+
 module.exports = {
   getAllProducts,
+  createProduct,
 };
