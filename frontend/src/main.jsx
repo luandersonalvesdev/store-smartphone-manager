@@ -5,12 +5,17 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage';
+import LoginPage from './pages/LoginPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     loader: () => redirect('/login'),
     errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
   },
 ]);
 
