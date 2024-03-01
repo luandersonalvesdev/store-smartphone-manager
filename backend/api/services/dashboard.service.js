@@ -2,7 +2,7 @@ const { Product, sequelize } = require('../models');
 const { singleProductSchema, singleProductSchemaWithId } = require('../validations/joi/singleProductSchema.joi');
 const multipleProductSchema = require('../validations/joi/multipleProductSchema.joi');
 const {
-  httpResponseMapper, SUCCESS, BAD_REQUEST, CREATED,
+  httpResponseMapper, SUCCESS, BAD_REQUEST, CREATED, NO_CONTENT,
 } = require('../utils/httpResponseMapper');
 
 const getAllProducts = async (user) => {
@@ -118,8 +118,23 @@ const updateProduct = async (user, product) => {
   };
 };
 
+const deleteProduct = async (user, id) => {
+  Product.destroy({
+    where: {
+      id,
+      userId: user.id,
+    },
+  });
+
+  return {
+    status: httpResponseMapper(NO_CONTENT),
+    data: {},
+  };
+};
+
 module.exports = {
   getAllProducts,
   createProduct,
   updateProduct,
+  deleteProduct,
 };

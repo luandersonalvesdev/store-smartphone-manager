@@ -20,8 +20,16 @@ const updateProduct = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const deleteProduct = async (req, res) => {
+  const { user } = req.payload;
+  const { id } = req.params;
+  const { status, data } = await dashboardService.deleteProduct(user, id);
+  return res.status(status).json(data);
+};
+
 module.exports = {
   getAllProducts,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
