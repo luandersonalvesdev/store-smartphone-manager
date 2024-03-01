@@ -10,15 +10,11 @@ module.exports = {
           id: 1,
           username: 'Jorel',
           password: hashedPass,
-          createdAt: new Date(),
-          updatedAt: new Date(),
         },
         {
           id: 2,
           username: 'Lara',
           password: hashedPass,
-          createdAt: new Date(),
-          updatedAt: new Date(),
         },
       ],
     );

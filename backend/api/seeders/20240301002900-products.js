@@ -12,8 +12,6 @@ module.exports = {
           price: 10000,
           color: 'Red',
           user_id: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
         },
         {
           id: 2,
@@ -23,8 +21,6 @@ module.exports = {
           price: 30000,
           color: 'silver',
           user_id: 2,
-          createdAt: new Date(),
-          updatedAt: new Date(),
         },
       ],
     );
