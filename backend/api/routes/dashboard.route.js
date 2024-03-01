@@ -6,5 +6,6 @@ const route = express.Router();
 
 route.get('/product', jwtValidation, dashboardController.getAllProducts);
 route.post('/product', jwtValidation, dashboardController.createProduct);
+route.put('/product', jwtValidation, dashboardController.updateProduct);
 
 module.exports = route;

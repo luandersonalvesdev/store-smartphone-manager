@@ -1,5 +1,5 @@
 const { Product, sequelize } = require('../models');
-const singleProductSchema = require('../validations/joi/singleProductSchema.joi');
+const { singleProductSchema, singleProductSchemaWithId } = require('../validations/joi/singleProductSchema.joi');
 const multipleProductSchema = require('../validations/joi/multipleProductSchema.joi');
 const {
   httpResponseMapper, SUCCESS, BAD_REQUEST, CREATED,
@@ -96,7 +96,30 @@ const createProduct = async (user, product) => {
   };
 };
 
+const updateProduct = async (user, product) => {
+  const { error } = singleProductSchemaWithId.validate(product);
+  if (error) {
+    return {
+      status: httpResponseMapper(BAD_REQUEST),
+      data: { error: 'Data validation', message: error.message },
+    };
+  }
+
+  Product.update(product, {
+    where: {
+      id: product.id,
+      userId: user.id,
+    },
+  });
+
+  return {
+    status: httpResponseMapper(SUCCESS),
+    data: product,
+  };
+};
+
 module.exports = {
   getAllProducts,
   createProduct,
+  updateProduct,
 };

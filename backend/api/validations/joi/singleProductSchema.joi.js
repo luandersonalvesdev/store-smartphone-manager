@@ -16,4 +16,16 @@ const singleProductSchema = Joi.object({
   .or('brand', 'details')
   .or('model', 'details');
 
-module.exports = singleProductSchema;
+const singleProductSchemaWithId = Joi.object({
+  id: Joi.number().required(),
+  name: Joi.string().required(),
+  price: Joi.number().required(),
+  brand: Joi.string().required(),
+  model: Joi.string().required(),
+  color: Joi.string().required(),
+})
+  .xor('color', 'details')
+  .or('brand', 'details')
+  .or('model', 'details');
+
+module.exports = { singleProductSchema, singleProductSchemaWithId };
