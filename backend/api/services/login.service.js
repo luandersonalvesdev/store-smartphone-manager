@@ -1,7 +1,7 @@
 const loginSchema = require('../validations/joi/loginSchema.joi');
 const { generateToken } = require('../auth/authToken');
 const { validateHashPass } = require('../validations/bcrypt/passwordValidator.bcrypt');
-const { User } = require('../models');
+const { User, Sequelize } = require('../models');
 const {
   httpResponseMapper, BAD_REQUEST, NOT_FOUND, UNAUTHORIZED, SUCCESS,
 } = require('../utils/httpResponseMapper');
@@ -16,7 +16,11 @@ const logInto = async (username, password) => {
   }
 
   const userFromDB = await User.findOne({
-    where: { username },
+    where: {
+      username: {
+        [Sequelize.Op.iLike]: username,
+      },
+    },
   });
 
   if (!userFromDB) {
