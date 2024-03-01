@@ -20,6 +20,9 @@ module.exports = {
       price: {
         type: Sequelize.REAL,
       },
+      color: {
+        type: Sequelize.STRING,
+      },
       userId: {
         allowNull: false,
         field: 'user_id',

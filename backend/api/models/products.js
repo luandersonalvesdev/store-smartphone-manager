@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       brand: { type: DataTypes.STRING },
       model: { type: DataTypes.STRING },
       price: { type: DataTypes.REAL },
+      color: { type: DataTypes.STRING },
       userId: { type: DataTypes.INTEGER, foreignKey: true },
     },
     {
