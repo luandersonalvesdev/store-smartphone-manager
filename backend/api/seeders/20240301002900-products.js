@@ -24,6 +24,8 @@ module.exports = {
         },
       ],
     );
+
+    await queryInterface.sequelize.query("SELECT setval('products_id_seq', max(id)) FROM products;");
   },
 
   async down(queryInterface) {

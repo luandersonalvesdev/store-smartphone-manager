@@ -18,6 +18,8 @@ module.exports = {
         },
       ],
     );
+
+    await queryInterface.sequelize.query("SELECT setval('users_id_seq', max(id)) FROM users;");
   },
 
   async down(queryInterface) {
