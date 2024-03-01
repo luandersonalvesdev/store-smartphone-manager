@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginRoute } = require('./routes');
+const { loginRoute, signupRoute } = require('./routes');
 
 const app = express();
 
@@ -10,5 +10,6 @@ app.get('/', (_req, res) => {
 });
 
 app.use('/login', loginRoute);
+app.use('/signup', signupRoute);
 
 module.exports = app;
