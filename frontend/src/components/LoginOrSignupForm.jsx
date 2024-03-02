@@ -45,7 +45,7 @@ export default function LoginOrSignupForm() {
       const response = await axios.post(`/${endpoint}`, data);
       const { token } = response.data;
       localStorage.setItem('smartphone-store-token', token);
-      return navigate('/dashboard');
+      return navigate('/dashboard', { replace: true });
     } catch (error) {
       setError('root', {
         type: 'custom',

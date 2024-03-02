@@ -7,8 +7,10 @@ import ReactDOM from 'react-dom/client';
 import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
 import ProductsContextProvider from './contexts/ProductsContext';
-import RedirectDashboardRoute from './routes/redirect/RedirectDashboardRoute';
 import SignupPage from './pages/SignupPage';
+import DashboardPage from './pages/DashboardPage';
+import authRouteLoader from './utils/authRouteLoader';
+import notAuthRouteLoader from './utils/notAuthRouteLoader';
 
 const router = createBrowserRouter([
   {
@@ -19,20 +21,24 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: (
-      <RedirectDashboardRoute>
-        <LoginPage />
-      </RedirectDashboardRoute>
+      <LoginPage />
     ),
+    loader: () => notAuthRouteLoader(),
   },
   {
     path: '/signup',
     element: (
-      <RedirectDashboardRoute>
-        <SignupPage />
-      </RedirectDashboardRoute>
+      <SignupPage />
     ),
+    loader: () => notAuthRouteLoader(),
   },
-
+  {
+    path: '/dashboard',
+    element: (
+      <DashboardPage />
+    ),
+    loader: () => authRouteLoader(),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
