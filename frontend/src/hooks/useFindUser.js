@@ -3,7 +3,7 @@ import { getFromLs } from '../utils/localStorage';
 import axios from '../utils/axios';
 
 const useFindUser = () => {
-  const [statusCode, setStatusCode] = useState(0);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -13,7 +13,7 @@ const useFindUser = () => {
             Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
           },
         });
-        setStatusCode(response.status);
+        setUser(response.data);
       } catch (error) {
         setStatusCode(0);
       }
@@ -22,7 +22,7 @@ const useFindUser = () => {
     fetchUser();
   }, []);
 
-  return { statusCode };
+  return { user };
 };
 
 export default useFindUser;

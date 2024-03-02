@@ -1,7 +1,9 @@
+import Header from '../components/Header';
+
 export default function DashboardPage() {
   return (
     <main>
-      <h1>Dashboard</h1>
+      <Header />
     </main>
   );
 }
