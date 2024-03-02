@@ -1,22 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import axios from '../utils/axios';
-
-const MIN_USERNAME_LENGTH = 3;
-const MIN_PASSWORD_LENGTH = 5;
-
-const zSchema = z
-  .object({
-    username: z
-      .string()
-      .min(MIN_USERNAME_LENGTH, 'Username must be at least 3 characters.'),
-    password: z
-      .string()
-      .min(MIN_PASSWORD_LENGTH, 'Password must be at least 5 characters.'),
-  })
-  .required();
+import zLoginSignupSchema from '../schemas/loginAndSignup.zschema';
 
 export default function LoginOrSignupForm() {
   const {
@@ -28,7 +14,7 @@ export default function LoginOrSignupForm() {
       isSubmitting,
     },
   } = useForm({
-    resolver: zodResolver(zSchema),
+    resolver: zodResolver(zLoginSignupSchema),
   });
 
   const navigate = useNavigate();
@@ -55,7 +41,7 @@ export default function LoginOrSignupForm() {
   };
 
   return (
-    <form action="/projects/new" onSubmit={ handleSubmit(onSubmit) }>
+    <form onSubmit={ handleSubmit(onSubmit) }>
       <div>
         <label htmlFor="username">Username</label>
         <input

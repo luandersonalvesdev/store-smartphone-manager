@@ -4,7 +4,6 @@ import Logout from './Logout';
 export default function Header() {
   const { user } = useFindUser();
 
-  console.log(user);
   return (
     <header>
       <p>
