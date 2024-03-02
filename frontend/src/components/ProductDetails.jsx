@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import EditProductForm from './EditProductForm';
+import DeleteProduct from './DeleteProduct';
 
 export default function ProductDetails(
   { product: { name, brand, color, model, price, id } },
@@ -25,6 +26,7 @@ export default function ProductDetails(
               <p>{color}</p>
               <p>{price}</p>
               <button type="button" onClick={ () => setEditing(true) }>Edit</button>
+              <DeleteProduct productId={ id } />
             </div>
           )
       }
