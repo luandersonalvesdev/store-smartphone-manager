@@ -4,7 +4,7 @@ import { removeToLs } from '../utils/localStorage';
 export default function Logout() {
   const navigate = useNavigate();
   const logout = () => {
-    removeToLs('smartphone-store-token');
+    removeToLs('smarphone-manager-token');
     navigate('/login');
   };
 

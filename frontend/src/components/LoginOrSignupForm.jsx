@@ -30,7 +30,7 @@ export default function LoginOrSignupForm() {
       const endpoint = getEndpoint();
       const response = await axios.post(`/${endpoint}`, data);
       const { token } = response.data;
-      localStorage.setItem('smartphone-store-token', token);
+      localStorage.setItem('smarphone-manager-token', token);
       return navigate('/dashboard');
     } catch (error) {
       setError('root', {
@@ -66,7 +66,16 @@ export default function LoginOrSignupForm() {
         disabled={ isSubmitting }
         type="submit"
       >
-        {isSubmitting ? 'Logging in...' : 'Login'}
+        {
+          getEndpoint() === 'login' && (
+            isSubmitting ? 'Logging in...' : 'Login'
+          )
+        }
+        {
+          getEndpoint() !== 'login' && (
+            isSubmitting ? 'Signing in...' : 'Signup'
+          )
+        }
       </button>
       <p>{errors.root && errors.root.message}</p>
     </form>

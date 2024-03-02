@@ -24,11 +24,12 @@ export default function AddNewProductForm() {
     try {
       const response = await axios.post('/dashboard/product', data, {
         headers: {
-          Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
+          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
         },
       });
       setAllProducts((prev) => [...prev, response.data]);
     } catch (error) {
+      window.location.reload();
       setError('root', {
         type: 'custom',
         message: error.response.data.message,

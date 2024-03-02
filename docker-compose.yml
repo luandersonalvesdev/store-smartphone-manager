@@ -4,7 +4,7 @@ services:
 
   backend:
     build: ./backend
-    container_name: backend-psel-lexartlabs
+    container_name: backend-smartphone-manager
     tty: true
     stdin_open: true
     restart: always
@@ -17,22 +17,22 @@ services:
     env_file:
       ./backend/.env
     networks:
-      - psel-lexartlabs-network
+      - smartphone-manager-network
 
   db:
     image: postgres:16.2
     restart: always
-    container_name: db-psel-lexartlabs
+    container_name: db-smartphone-manager
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: pass
     networks:
-      - psel-lexartlabs-network
+      - smartphone-manager-network
 
   frontend:
     build: ./frontend
-    container_name: frontend-psel-lexartlabs
+    container_name: frontend-smartphone-manager
     tty: true
     stdin_open: true
     restart: always
@@ -41,8 +41,8 @@ services:
     ports:
       - 3000:3000
     networks:
-      - psel-lexartlabs-network
+      - smartphone-manager-network
 
 networks:
-  psel-lexartlabs-network:
+  smartphone-manager-network:
     driver: bridge

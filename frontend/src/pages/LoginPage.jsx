@@ -1,12 +1,12 @@
 import LoginOrSignupForm from '../components/LoginOrSignupForm';
-import SignupOrLogin from '../components/SignupOrLogin';
+import LoginOrSignupLink from '../components/LoginOrSignupLink';
 
 export default function LoginPage() {
   return (
     <main>
       <h1>Login</h1>
       <LoginOrSignupForm />
-      <SignupOrLogin />
+      <LoginOrSignupLink />
     </main>
   );
 }

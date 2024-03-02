@@ -8,11 +8,15 @@ export default function DeleteProduct({ productId }) {
   const { setAllProducts } = useContext(ProductsContext);
 
   const deleteProduct = async () => {
-    await axios.delete(`/dashboard/product/${productId}`, {
-      headers: {
-        Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
-      },
-    });
+    try {
+      await axios.delete(`/dashboard/product/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+        },
+      });
+    } catch (error) {
+      window.location.reload();
+    }
 
     setAllProducts((prev) => prev.filter((prod) => prod.id !== productId));
   };

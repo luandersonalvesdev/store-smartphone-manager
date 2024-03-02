@@ -6,7 +6,7 @@ const notAuthRouteLoader = async () => {
   try {
     await axios.get('/user', {
       headers: {
-        Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
+        Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
       },
     });
     return redirect('/dashboard');

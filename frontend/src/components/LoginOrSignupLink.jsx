@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function SignupOrLogin() {
+export default function LoginOrSignupLink() {
   const currentUrl = window.location.href.includes('login');
   return (
     <div>

@@ -34,7 +34,7 @@ export default function EditProductForm(
     try {
       const response = await axios.put('/dashboard/product', { ...data, id }, {
         headers: {
-          Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
+          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
         },
       });
       setAllProducts((prev) => {
@@ -42,7 +42,7 @@ export default function EditProductForm(
         return prev.map((prod) => (prod.id === updatedProd.id ? updatedProd : prod));
       });
     } catch (error) {
-      console.log(error);
+      window.location.reload();
       setError('root', {
         type: 'custom',
         message: error.response.data.message,

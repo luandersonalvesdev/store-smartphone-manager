@@ -2,11 +2,13 @@ import { useContext, useState } from 'react';
 import { ProductsContext } from '../contexts/ProductsContext';
 import ProductDetails from './ProductDetails';
 import FilterProducts from './FilterProducts';
+import useGetProducts from '../hooks/useGetProducts';
 
 export default function ProductsList() {
   const { allProducts } = useContext(ProductsContext);
   const [filterValue, setFilterValue] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('name');
+  useGetProducts();
 
   const filteredProducts = allProducts.filter((product) => {
     return product[selectedCategory].toLowerCase().includes(filterValue.toLowerCase());

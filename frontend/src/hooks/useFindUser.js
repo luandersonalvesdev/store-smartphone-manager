@@ -10,7 +10,7 @@ const useFindUser = () => {
       try {
         const response = await axios.get('/user', {
           headers: {
-            Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
+            Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
           },
         });
         setUser(response.data);
