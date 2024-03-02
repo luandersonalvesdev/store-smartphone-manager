@@ -14,7 +14,7 @@ export default function SignupOrLogin() {
           )
           : (
             <p>
-              Already have an account?
+              {'Already have an account? '}
               <Link to="/login">Log in</Link>
             </p>
           )

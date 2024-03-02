@@ -8,6 +8,7 @@ import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
 import ProductsContextProvider from './contexts/ProductsContext';
 import RedirectDashboardRoute from './routes/redirect/RedirectDashboardRoute';
+import SignupPage from './pages/SignupPage';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,15 @@ const router = createBrowserRouter([
       </RedirectDashboardRoute>
     ),
   },
+  {
+    path: '/signup',
+    element: (
+      <RedirectDashboardRoute>
+        <SignupPage />
+      </RedirectDashboardRoute>
+    ),
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

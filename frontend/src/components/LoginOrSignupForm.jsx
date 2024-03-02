@@ -18,7 +18,7 @@ const zSchema = z
   })
   .required();
 
-export default function LoginForm() {
+export default function LoginOrSignupForm() {
   const {
     register,
     handleSubmit,
@@ -33,9 +33,16 @@ export default function LoginForm() {
 
   const navigate = useNavigate();
 
+  const getEndpoint = () => {
+    const currentUrl = window.location.href;
+    const splitedUrl = currentUrl.split('/');
+    return splitedUrl[splitedUrl.length - 1];
+  };
+
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('/login', data);
+      const endpoint = getEndpoint();
+      const response = await axios.post(`/${endpoint}`, data);
       const { token } = response.data;
       localStorage.setItem('smartphone-store-token', token);
       return navigate('/dashboard');
