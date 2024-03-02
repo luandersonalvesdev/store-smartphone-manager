@@ -9,7 +9,7 @@ const notAuthRouteLoader = async () => {
         Authorization: `Bearer ${getFromLs('smartphone-store-token')}`,
       },
     });
-    return redirect('/dashboard', { replace: true });
+    return redirect('/dashboard');
   } catch (error) {
     return null;
   }

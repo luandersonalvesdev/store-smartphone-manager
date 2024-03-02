@@ -11,7 +11,7 @@ const authRouteLoader = async () => {
     });
     return null;
   } catch (error) {
-    return redirect('/login', { replace: true });
+    return redirect('/login');
   }
 };
 
