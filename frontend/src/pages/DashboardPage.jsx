@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import ProductsList from '../components/ProductsList';
 import AddNewProductForm from '../components/AddNewProductForm';
 
 export default function DashboardPage() {
@@ -6,6 +7,7 @@ export default function DashboardPage() {
     <main>
       <Header />
       <AddNewProductForm />
+      <ProductsList />
     </main>
   );
 }
