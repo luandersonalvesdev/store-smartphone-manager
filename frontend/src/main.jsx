@@ -1,11 +1,13 @@
-import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   redirect,
   RouterProvider,
 } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
+import ProductsContextProvider from './contexts/ProductsContext';
+import RedirectDashboardRoute from './routes/redirect/RedirectDashboardRoute';
 
 const router = createBrowserRouter([
   {
@@ -15,10 +17,16 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LoginPage />,
+    element: (
+      <RedirectDashboardRoute>
+        <LoginPage />
+      </RedirectDashboardRoute>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={ router } />,
+  <ProductsContextProvider>
+    <RouterProvider router={ router } />
+  </ProductsContextProvider>,
 );
