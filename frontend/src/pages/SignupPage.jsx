@@ -3,8 +3,8 @@ import LoginOrSignupLink from '../components/LoginOrSignupLink';
 
 export default function SignupPage() {
   return (
-    <main className="flex justify-center items-center h-screen mx-10">
-      <div className="flex flex-col justify-center max-w-[350px]">
+    <main className="flex flex-col justify-center items-center h-screen mx-10">
+      <div className="flex flex-col justify-center w-[325px]">
         <LoginOrSignupForm />
         <LoginOrSignupLink />
       </div>

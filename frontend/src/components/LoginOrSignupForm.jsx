@@ -31,8 +31,6 @@ export default function LoginOrSignupForm() {
     try {
       const endpoint = getEndpoint();
       const response = await loginOrSignup(endpoint, data);
-
-      console.log(loading);
       const { token } = response.data;
       localStorage.setItem('smartphone-manager-token', token);
       return navigate('/dashboard');
@@ -71,8 +69,8 @@ export default function LoginOrSignupForm() {
             errors.username
               && (
                 <p
-                  className="text-red-500 bg-red-50 text-sm border rounded border-red-100
-                  px-2 py-1 mt-2 text-center"
+                  className="text-red-500 bg-red-50 text-sm border rounded border-red-200
+                  px-1 mt-1 text-center"
                 >
                   {errors.username.message}
                 </p>
@@ -97,8 +95,8 @@ export default function LoginOrSignupForm() {
             errors.password
               && (
                 <p
-                  className="text-red-500 text-sm bg-red-50 border rounded border-red-100
-                  px-2 py-1 mt-2 text-center"
+                  className="text-red-500 bg-red-50 text-sm border rounded border-red-200
+                  px-1 mt-1 text-center"
                 >
                   {errors.password.message}
                 </p>
@@ -112,7 +110,7 @@ export default function LoginOrSignupForm() {
           errors.root
             && (
               <p
-                className="text-red-500 bg-red-50 border rounded border-red-100 px-2 py-1
+                className="text-red-500 bg-red-50 border rounded border-red-200 px-2 py-1
                 mt-4 text-center"
               >
                 {errors.root.message}
