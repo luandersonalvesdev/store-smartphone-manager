@@ -11,7 +11,7 @@ const useDeleteProduct = () => {
     try {
       axios.delete(`/dashboard/product/${productId}`, {
         headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+          Authorization: `Bearer ${getFromLs('smartphone-manager-token')}`,
         },
       });
     } catch (err) {

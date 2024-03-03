@@ -11,7 +11,7 @@ const useUpdateProduct = () => {
     try {
       return axios.put('/dashboard/product', { ...data, id }, {
         headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+          Authorization: `Bearer ${getFromLs('smartphone-manager-token')}`,
         },
       });
     } catch (err) {

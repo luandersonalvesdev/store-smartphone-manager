@@ -11,7 +11,7 @@ const useCreateProduct = () => {
     try {
       return axios.post('/dashboard/product', data, {
         headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+          Authorization: `Bearer ${getFromLs('smartphone-manager-token')}`,
         },
       });
     } catch (err) {

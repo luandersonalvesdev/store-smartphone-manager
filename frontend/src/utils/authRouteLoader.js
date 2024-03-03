@@ -6,7 +6,7 @@ const authRouteLoader = async () => {
   try {
     await axios.get('/user', {
       headers: {
-        Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+        Authorization: `Bearer ${getFromLs('smartphone-manager-token')}`,
       },
     });
     return null;

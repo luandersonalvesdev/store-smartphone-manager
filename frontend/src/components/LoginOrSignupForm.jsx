@@ -31,7 +31,7 @@ export default function LoginOrSignupForm() {
       const endpoint = getEndpoint();
       const response = await loginOrSignup(endpoint, data);
       const { token } = response.data;
-      localStorage.setItem('smarphone-manager-token', token);
+      localStorage.setItem('smartphone-manager-token', token);
       return navigate('/dashboard');
     } catch (error) {
       setError('root', {

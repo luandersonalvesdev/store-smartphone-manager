@@ -13,7 +13,7 @@ export default function ProductsContextProvider({ children }) {
       try {
         const response = await axios.get('/dashboard/product', {
           headers: {
-            Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
+            Authorization: `Bearer ${getFromLs('smartphone-manager-token')}`,
           },
         });
         setAllProducts(response.data);
