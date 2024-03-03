@@ -9,6 +9,13 @@ export default function Logout() {
   };
 
   return (
-    <button type="button" onClick={ logout }>Logout</button>
+    <button
+      className="bg-red-500 hover:brightness-105 duration-300 text-white
+        font-bold py-1 px-3 rounded"
+      type="button"
+      onClick={ logout }
+    >
+      Logout
+    </button>
   );
 }
