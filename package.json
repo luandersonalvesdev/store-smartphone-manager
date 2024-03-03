@@ -1,0 +1,13 @@
+{
+  "name": "psel-lexartlabs-fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
