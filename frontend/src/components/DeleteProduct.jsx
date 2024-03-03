@@ -1,28 +1,24 @@
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import axios from '../utils/axios';
-import { getFromLs } from '../utils/localStorage';
 import { ProductsContext } from '../contexts/ProductsContext';
+import useDeleteProduct from '../hooks/useDeleteProduct';
 
 export default function DeleteProduct({ productId }) {
   const { setAllProducts } = useContext(ProductsContext);
+  const { deleteProduct } = useDeleteProduct();
 
-  const deleteProduct = async () => {
+  const handleDeleteProduct = async () => {
     try {
-      await axios.delete(`/dashboard/product/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
-        },
-      });
-    } catch (error) {
+      deleteProduct(productId);
+    } catch (err) {
       window.location.reload();
+    } finally {
+      setAllProducts((prev) => prev.filter((prod) => prod.id !== productId));
     }
-
-    setAllProducts((prev) => prev.filter((prod) => prod.id !== productId));
   };
 
   return (
-    <button onClick={ deleteProduct }>Delete</button>
+    <button onClick={ handleDeleteProduct }>Delete</button>
   );
 }
 

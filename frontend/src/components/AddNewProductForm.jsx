@@ -1,17 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
-import axios from '../utils/axios';
-import { getFromLs } from '../utils/localStorage';
 import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
+import useCreateProduct from '../hooks/useCreateProduct';
 
 export default function AddNewProductForm() {
   const { setAllProducts } = useContext(ProductsContext);
+  const { createProduct } = useCreateProduct();
   const {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: {
       errors,
       isSubmitting,
@@ -22,12 +23,10 @@ export default function AddNewProductForm() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('/dashboard/product', data, {
-        headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
-        },
-      });
-      setAllProducts((prev) => [...prev, response.data]);
+      const response = await createProduct(data);
+      const createdProduct = response.data;
+      setAllProducts((prev) => [...prev, createdProduct]);
+      reset();
     } catch (error) {
       window.location.reload();
       setError('root', {

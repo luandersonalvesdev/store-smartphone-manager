@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
-import axios from '../utils/axios';
 import zLoginSignupSchema from '../schemas/loginAndSignup.zschema';
+import useLoginOrSignup from '../hooks/useLoginOrSignup';
 
 export default function LoginOrSignupForm() {
+  const { loginOrSignup } = useLoginOrSignup();
   const {
     register,
     handleSubmit,
@@ -28,7 +29,7 @@ export default function LoginOrSignupForm() {
   const onSubmit = async (data) => {
     try {
       const endpoint = getEndpoint();
-      const response = await axios.post(`/${endpoint}`, data);
+      const response = await loginOrSignup(endpoint, data);
       const { token } = response.data;
       localStorage.setItem('smarphone-manager-token', token);
       return navigate('/dashboard');

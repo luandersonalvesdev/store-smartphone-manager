@@ -2,15 +2,15 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
 import ProptTypes from 'prop-types';
-import axios from '../utils/axios';
-import { getFromLs } from '../utils/localStorage';
 import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
+import useUpdateProduct from '../hooks/useUpdateProduct';
 
 export default function EditProductForm(
   { product: { name, brand, color, model, price, id }, setEditing },
 ) {
   const { setAllProducts } = useContext(ProductsContext);
+  const { updateProduct } = useUpdateProduct();
   const {
     register,
     handleSubmit,
@@ -32,20 +32,16 @@ export default function EditProductForm(
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.put('/dashboard/product', { ...data, id }, {
-        headers: {
-          Authorization: `Bearer ${getFromLs('smarphone-manager-token')}`,
-        },
-      });
+      const response = await updateProduct(data, id);
       setAllProducts((prev) => {
         const updatedProd = response.data;
         return prev.map((prod) => (prod.id === updatedProd.id ? updatedProd : prod));
       });
-    } catch (error) {
+    } catch (err) {
       window.location.reload();
       setError('root', {
         type: 'custom',
-        message: error.response.data.message,
+        message: err.response.data.message,
       });
     } finally {
       setEditing(false);
