@@ -26,7 +26,7 @@ export default function CreateProductForm() {
       const response = await createProduct(data);
       const createdProduct = response.data;
       setAllProducts((prev) => [...prev, createdProduct]);
-      reset();
+      // reset();
     } catch (error) {
       window.location.reload();
       setError('root', {
