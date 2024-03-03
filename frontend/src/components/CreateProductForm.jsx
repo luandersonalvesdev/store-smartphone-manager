@@ -5,7 +5,7 @@ import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
 import useCreateProduct from '../hooks/useCreateProduct';
 
-export default function AddNewProductForm() {
+export default function CreateProductForm() {
   const { setAllProducts } = useContext(ProductsContext);
   const { createProduct } = useCreateProduct();
   const {

@@ -1,12 +1,12 @@
 import Header from '../components/Header';
 import ProductsList from '../components/ProductsList';
-import AddNewProductForm from '../components/AddNewProductForm';
+import CreateProductForm from '../components/CreateProductForm';
 
 export default function DashboardPage() {
   return (
     <main>
       <Header />
-      <AddNewProductForm />
+      <CreateProductForm />
       <ProductsList />
     </main>
   );

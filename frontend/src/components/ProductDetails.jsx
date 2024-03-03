@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import EditProductForm from './EditProductForm';
+import UpdateProductForm from './UpdateProductForm';
 import DeleteProduct from './DeleteProduct';
 
 export default function ProductDetails(
@@ -13,7 +13,7 @@ export default function ProductDetails(
       {
         isEditing
           ? (
-            <EditProductForm
+            <UpdateProductForm
               product={ { name, brand, color, model, price, id } }
               setEditing={ setEditing }
             />

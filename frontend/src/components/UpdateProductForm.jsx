@@ -6,7 +6,7 @@ import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
 import useUpdateProduct from '../hooks/useUpdateProduct';
 
-export default function EditProductForm(
+export default function UpdateProductForm(
   { product: { name, brand, color, model, price, id }, setEditing },
 ) {
   const { setAllProducts } = useContext(ProductsContext);
@@ -104,7 +104,7 @@ export default function EditProductForm(
   );
 }
 
-EditProductForm.propTypes = {
+UpdateProductForm.propTypes = {
   product: ProptTypes.shape({
     name: ProptTypes.string.isRequired,
     brand: ProptTypes.string.isRequired,
