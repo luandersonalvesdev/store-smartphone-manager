@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import zLoginSignupSchema from '../schemas/loginAndSignup.zschema';
 import useLoginOrSignup from '../hooks/useLoginOrSignup';
+import LoadingSpinner from '../animations/LoadingSpinner';
 
 export default function LoginOrSignupForm() {
   const { loginOrSignup } = useLoginOrSignup();
@@ -30,6 +31,8 @@ export default function LoginOrSignupForm() {
     try {
       const endpoint = getEndpoint();
       const response = await loginOrSignup(endpoint, data);
+
+      console.log(loading);
       const { token } = response.data;
       localStorage.setItem('smartphone-manager-token', token);
       return navigate('/dashboard');
@@ -40,45 +43,101 @@ export default function LoginOrSignupForm() {
       });
     }
   };
-
   return (
-    <form onSubmit={ handleSubmit(onSubmit) }>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          { ...register('username') }
-          type="text"
-          name="username"
-          id="username"
-        />
-        <span>{errors.username && errors.username.message}</span>
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          { ...register('password') }
-          type="password"
-          name="password"
-          id="password"
-        />
-        <span>{errors.password && errors.password.message}</span>
-      </div>
-      <button
-        disabled={ isSubmitting }
-        type="submit"
-      >
+    <div className="bg-gray-50 shadow-sm rounded-t-xl px-8 py-8">
+      <h2 className="opacity-80 text-4xl mb-10 font-semibold">
         {
-          getEndpoint() === 'login' && (
-            isSubmitting ? 'Logging in...' : 'Login'
-          )
+          getEndpoint() === 'login'
+            ? 'Login'
+            : 'Signup'
+        }
+      </h2>
+      <form onSubmit={ handleSubmit(onSubmit) }>
+        <div className="mb-5">
+          <label
+            className="block mb-1 text-base opacity-50"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+            { ...register('username') }
+            type="text"
+            name="username"
+            id="username"
+          />
+          {
+            errors.username
+              && (
+                <p
+                  className="text-red-500 bg-red-50 text-sm border rounded border-red-100
+                  px-2 py-1 mt-2 text-center"
+                >
+                  {errors.username.message}
+                </p>
+              )
+          }
+        </div>
+        <div className="mb-10">
+          <label
+            className="block mb-1 text-base opacity-50"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+            { ...register('password') }
+            type="password"
+            name="password"
+            id="password"
+          />
+          {
+            errors.password
+              && (
+                <p
+                  className="text-red-500 text-sm bg-red-50 border rounded border-red-100
+                  px-2 py-1 mt-2 text-center"
+                >
+                  {errors.password.message}
+                </p>
+              )
+          }
+        </div>
+        {
+          isSubmitting && <LoadingSpinner />
         }
         {
-          getEndpoint() !== 'login' && (
-            isSubmitting ? 'Signing in...' : 'Signup'
-          )
+          errors.root
+            && (
+              <p
+                className="text-red-500 bg-red-50 border rounded border-red-100 px-2 py-1
+                mt-4 text-center"
+              >
+                {errors.root.message}
+              </p>
+            )
         }
-      </button>
-      <p>{errors.root && errors.root.message}</p>
-    </form>
+        <button
+          className="
+            w-full bg-gunmetal hover:brightness-90 text-white font-semibold py-2 px-4
+            rounded duration-300 mt-2"
+          disabled={ isSubmitting }
+          type="submit"
+        >
+          {
+            getEndpoint() === 'login' && (
+              isSubmitting ? 'Logging in...' : 'Login'
+            )
+          }
+          {
+            getEndpoint() !== 'login' && (
+              isSubmitting ? 'Signing in...' : 'Signup'
+            )
+          }
+        </button>
+      </form>
+    </div>
   );
 }
