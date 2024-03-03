@@ -33,4 +33,6 @@ app.use('/signup', signupRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/user', userRoute);
 
-module.exports = app;
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
