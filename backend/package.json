@@ -8,8 +8,7 @@
     "dev": "nodemon ./api/server.js",
     "postinstall": "npx sequelize-cli db:migrate",
     "start": "node ./api/server.js",
-    "lint": "eslint .",
-    "vercel-build": "echo 'Running Vercel build'"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
