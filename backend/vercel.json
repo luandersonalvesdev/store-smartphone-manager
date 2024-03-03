@@ -11,5 +11,13 @@
       "src": "/(.*)",
       "dest": "api/app.js"
     }
-  ]
+  ],
+  "functions": {
+    "api/server.js": {
+      "includeFiles": [
+        "api/models/**/*",
+        "api/config/**/*"
+      ]
+    }
+  }
 }
