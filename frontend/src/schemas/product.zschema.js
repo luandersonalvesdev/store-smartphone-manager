@@ -5,21 +5,21 @@ const zProductSchema = z
     name: z
       .string()
       .trim()
-      .min(1, 'Name must be at least 1 characters.'),
+      .min(1, 'Name is required.'),
     price: z
       .number(),
     model: z
       .string()
       .trim()
-      .min(1, 'Model must be at least 1 characters.'),
+      .min(1, 'Model is required.'),
     brand: z
       .string()
       .trim()
-      .min(1, 'Brand must be at least 1 characters.'),
+      .min(1, 'Brand is required.'),
     color: z
       .string()
       .trim()
-      .min(1, 'Color must be at least 1 characters.'),
+      .min(1, 'Color is required.'),
   })
   .required();
 
