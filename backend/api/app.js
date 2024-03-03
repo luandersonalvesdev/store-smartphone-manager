@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const {
-  loginRoute, signupRoute, dashboardRoute, userRoute,
-} = require('./routes');
+const { loginRoute, signupRoute, dashboardRoute } = require('./routes');
 
 const app = express();
 
@@ -31,8 +29,5 @@ app.get('/', (_req, res) => {
 app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
 app.use('/dashboard', dashboardRoute);
-app.use('/user', userRoute);
 
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
