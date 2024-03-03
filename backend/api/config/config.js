@@ -1,4 +1,5 @@
 require('dotenv').config();
+const pg = require('pg');
 
 const enviroment = process.env.NODE_ENV || 'development';
 
@@ -15,6 +16,7 @@ const options = {
       rejectUnauthorized: false,
     },
   },
+  dialectModule: pg,
 };
 
 module.exports = {
