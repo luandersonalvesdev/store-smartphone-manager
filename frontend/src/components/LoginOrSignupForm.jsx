@@ -5,6 +5,10 @@ import zLoginSignupSchema from '../schemas/loginAndSignup.zschema';
 import useLoginOrSignup from '../hooks/useLoginOrSignup';
 import LoadingSpinner from '../animations/LoadingSpinner';
 
+const INPUT_CSS = 'w-full py-1 px-2 border border-gray-300 rounded outline-none';
+const P_INPUT_ERROR_CSS = `text-red-500 bg-red-50 text-sm border rounded border-red-200 
+px-1 mt-1 text-center`;
+
 export default function LoginOrSignupForm() {
   const { loginOrSignup } = useLoginOrSignup();
   const {
@@ -44,8 +48,6 @@ export default function LoginOrSignupForm() {
 
   const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
 
-  console.log(errors);
-
   return (
     <div className="bg-gray-50 shadow-sm rounded-t-xl px-8 py-8">
       <h2 className="opacity-80 text-4xl mb-10 font-semibold">
@@ -64,7 +66,7 @@ export default function LoginOrSignupForm() {
             Username
           </label>
           <input
-            className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+            className={ INPUT_CSS }
             { ...register('username') }
             type="text"
             name="username"
@@ -73,12 +75,7 @@ export default function LoginOrSignupForm() {
           {
             errors.username
               && (
-                <p
-                  className="text-red-500 bg-red-50 text-sm border rounded border-red-200
-                  px-1 mt-1 text-center"
-                >
-                  {errors.username.message}
-                </p>
+                <p className={ P_INPUT_ERROR_CSS }>{errors.username.message}</p>
               )
           }
         </div>
@@ -90,7 +87,7 @@ export default function LoginOrSignupForm() {
             Password
           </label>
           <input
-            className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+            className={ INPUT_CSS }
             { ...register('password') }
             type="password"
             name="password"
@@ -99,18 +96,10 @@ export default function LoginOrSignupForm() {
           {
             errors.password
               && (
-                <p
-                  className="text-red-500 bg-red-50 text-sm border rounded border-red-200
-                  px-1 mt-1 text-center"
-                >
-                  {errors.password.message}
-                </p>
+                <p className={ P_INPUT_ERROR_CSS }>{errors.password.message}</p>
               )
           }
         </div>
-        {
-          isSubmitting && <LoadingSpinner />
-        }
         {
           errors.root
             && (
@@ -132,12 +121,12 @@ export default function LoginOrSignupForm() {
         >
           {
             getEndpoint() === 'login' && (
-              isSubmitting ? 'Logging in...' : 'Login'
+              isSubmitting ? <LoadingSpinner /> : 'Login'
             )
           }
           {
             getEndpoint() !== 'login' && (
-              isSubmitting ? 'Signing in...' : 'Signup'
+              isSubmitting ? <LoadingSpinner /> : 'Signup'
             )
           }
         </button>

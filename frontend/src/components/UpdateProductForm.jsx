@@ -5,6 +5,10 @@ import ProptTypes from 'prop-types';
 import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
 import useUpdateProduct from '../hooks/useUpdateProduct';
+import LoadingSpinner from '../animations/LoadingSpinner';
+
+const INPUT_CSS = `w-full py-1 px-2 border border-gray-300 rounded outline-none
+placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50`;
 
 export default function UpdateProductForm(
   { product: { name, brand, color, model, price, id }, setEditing },
@@ -57,8 +61,7 @@ export default function UpdateProductForm(
     >
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
+          className={ INPUT_CSS }
           { ...register('name') }
           type="text"
           placeholder={ errors.name?.message }
@@ -66,8 +69,7 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
+          className={ INPUT_CSS }
           { ...register('brand') }
           type="text"
           placeholder={ errors.brand?.message }
@@ -75,8 +77,7 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
+          className={ INPUT_CSS }
           { ...register('model') }
           type="text"
           placeholder={ errors.model?.message }
@@ -84,8 +85,7 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
+          className={ INPUT_CSS }
           { ...register('color') }
           type="text"
           placeholder={ errors.color?.message }
@@ -93,8 +93,7 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
+          className={ INPUT_CSS }
           { ...register('price', {
             setValueAs: (value) => parseFloat(value),
           }) }
@@ -110,7 +109,7 @@ export default function UpdateProductForm(
         disabled={ isButtonDisabled }
         type="submit"
       >
-        {isSubmitting ? 'Saving...' : 'Save'}
+        {isSubmitting ? <LoadingSpinner /> : 'Save'}
       </button>
       <p>{errors.root && errors.root.message}</p>
     </form>
