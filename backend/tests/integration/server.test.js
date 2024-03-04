@@ -8,8 +8,8 @@ chai.use(sinonChai);
 
 const { expect } = chai;
 
-describe('Server health.', () => {
-  it('Should return status 200 and a text.', async () => {
+describe('Server health.', function() {
+  it('Should return status 200 and a text.', async function() {
     const response = await chai.request(app).get('/')
 
     expect(response.status).to.be.equal(200);
