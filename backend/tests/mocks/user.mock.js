@@ -1,17 +1,17 @@
-const USERNAME = 'test';
-const PASSWORD = 'password';
-const ID = 1;
-const TOKEN = 'token';
+const USERNAME_MOCK = 'test';
+const PASSWORD_MOCK = 'password';
+const ID_MOCK = 1;
+const TOKEN_MOCK = 'token';
 
 const USER_FROM_DB_MOCK = {
-  id: ID,
-  username: USERNAME,
-  password: PASSWORD,
+  id: ID_MOCK,
+  username: USERNAME_MOCK,
+  password: PASSWORD_MOCK,
 };
 
 const USER_FORM_MOCK = {
-  username: USERNAME,
-  password: PASSWORD,
+  username: USERNAME_MOCK,
+  password: PASSWORD_MOCK,
 };
 
 const INVALID_USER_FORM_MOCK = {
@@ -20,16 +20,16 @@ const INVALID_USER_FORM_MOCK = {
 };
 
 const WRONG_PASSWORD_FORM_MOCK = {
-  username: USERNAME,
+  username: USERNAME_MOCK,
   password: 'drowssap',
 };
 
 const LOGIN_SUCCESS_RESPONSE_MOCK = {
   status: 200,
   data: {
-    id: ID,
-    token: TOKEN,
-    username: USERNAME,
+    id: ID_MOCK,
+    token: TOKEN_MOCK,
+    username: USERNAME_MOCK,
   },
 }
 
@@ -37,6 +37,13 @@ const LOGIN_ERROR_USER_FORM_MOCK = {
   status: 400,
   data: {
     error: 'Data validation',
+  },
+}
+
+const SIGNUP_ERROR_USER_FORM_MOCK = {
+  status: 400,
+  data: {
+    error: 'Validation error',
   },
 }
 
@@ -56,6 +63,23 @@ const LOGIN_ERROR_UNAUTHORIZED = {
   },
 }
 
+const SIGNUP_SUCCESS_RESPONSE_MOCK = {
+  status: 201,
+  data: {
+    id: ID_MOCK,
+    token: TOKEN_MOCK,
+    username: USERNAME_MOCK,
+  },
+}
+
+const SIGNUP_ERROR_CONFLICT_MOCK = {
+  status: 409,
+  data: {
+    error: 'Conflict',
+    message: 'Username already registered',
+  },
+}
+
 module.exports = {
   USER_FROM_DB_MOCK,
   USER_FORM_MOCK,
@@ -65,4 +89,8 @@ module.exports = {
   LOGIN_ERROR_NOT_FOUND,
   WRONG_PASSWORD_FORM_MOCK,
   LOGIN_ERROR_UNAUTHORIZED,
+  TOKEN_MOCK,
+  SIGNUP_SUCCESS_RESPONSE_MOCK,
+  SIGNUP_ERROR_USER_FORM_MOCK,
+  SIGNUP_ERROR_CONFLICT_MOCK,
 }

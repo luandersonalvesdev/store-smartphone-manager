@@ -25,7 +25,7 @@ describe('Login tests.', () => {
 
   it('SUCCESS login.', async () => {
     sinon.stub(User, 'findOne').resolves(USER_FROM_DB_MOCK);
-    sinon.stub(bcrypt, 'compareSync').returns(true);
+    sinon.stub(bcrypt, 'compareSync').resolves(true);
     sinon.stub(jwt, 'sign').returns(LOGIN_SUCCESS_RESPONSE_MOCK.data.token);
 
     const response = await chai.request(app)
