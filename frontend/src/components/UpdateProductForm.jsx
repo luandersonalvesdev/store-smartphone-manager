@@ -49,55 +49,61 @@ export default function UpdateProductForm(
   };
 
   return (
-    <form onSubmit={ handleSubmit(onSubmit) }>
+    <form
+      className="mt-2"
+      onSubmit={ handleSubmit(onSubmit) }
+    >
       <div>
-        <label htmlFor="name">Name</label>
         <input
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
+          placeholder:text-red-400 placeholder:italic placeholder:text-opacity-50"
           { ...register('name') }
           type="text"
+          placeholder={ errors.name?.message }
         />
-        <span>{errors.name && errors.name.message}</span>
       </div>
       <div>
-        <label htmlFor="brand">brand</label>
         <input
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
           { ...register('brand') }
           type="text"
+          placeholder={ errors.brand?.message }
         />
-        <span>{errors.brand && errors.brand.message}</span>
       </div>
       <div>
-        <label htmlFor="model">model</label>
         <input
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
           { ...register('model') }
           type="text"
+          placeholder={ errors.model?.message }
         />
-        <span>{errors.model && errors.model.message}</span>
       </div>
       <div>
-        <label htmlFor="color">Color</label>
         <input
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
           { ...register('color') }
           type="text"
+          placeholder={ errors.color?.message }
         />
-        <span>{errors.color && errors.color.message}</span>
       </div>
       <div>
-        <label htmlFor="price">Price</label>
         <input
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
           { ...register('price', {
             setValueAs: (value) => parseFloat(value),
           }) }
           type="number"
           step="any"
+          placeholder={ errors.price?.message }
         />
-        <span>{errors.price && errors.price.message}</span>
       </div>
       <button
+        className="mt-2 bg-green-500 text-white hover:brightness-105 duration-300
+        rounded px-6 py-1 text-center text-wrap shadow-md w-full font-bold"
         disabled={ isSubmitting }
         type="submit"
       >
-        {isSubmitting ? 'Editing ...' : 'Edit Product'}
+        {isSubmitting ? 'Saving...' : 'Save'}
       </button>
       <p>{errors.root && errors.root.message}</p>
     </form>

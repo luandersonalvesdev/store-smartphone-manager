@@ -15,34 +15,41 @@ export default function ProductsList() {
   });
 
   return (
-    <div
-      className="flex flex-col justify-center items-center border rounded-lg mt-3 mx-5
-      p-5"
-    >
-      <div>
-        <FilterProducts
-          onFilterChange={ (value) => setFilterValue(value) }
-          onCategoryChange={ (category) => setSelectedCategory(category) }
-        />
-      </div>
-      <div>
-        <ul className="flex flex-row flex-wrap gap-5 mt-6">
-          {
-            filteredProducts
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((product) => {
-                return (
-                  <li
-                    className="border rounded-lg py-2 px-4"
-                    key={ product.id }
-                  >
-                    <ProductDetails product={ product } />
-                  </li>
-                );
-              })
-          }
-        </ul>
-      </div>
+    <div>
+      {
+        allProducts.length !== 0
+        && (
+          <div
+            className="flex flex-col justify-center items-center border rounded-lg mt-3
+            mb-10 mx-5 p-5"
+          >
+            <div>
+              <FilterProducts
+                onFilterChange={ (value) => setFilterValue(value) }
+                onCategoryChange={ (category) => setSelectedCategory(category) }
+              />
+            </div>
+            <div>
+              <ul className="flex flex-row flex-wrap gap-5 mt-6">
+                {
+                  filteredProducts
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((product) => {
+                      return (
+                        <li
+                          className="border rounded-lg py-2 px-4 max-w-52"
+                          key={ product.id }
+                        >
+                          <ProductDetails product={ product } />
+                        </li>
+                      );
+                    })
+                }
+              </ul>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 }

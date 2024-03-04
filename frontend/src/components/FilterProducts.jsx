@@ -5,13 +5,13 @@ export default function FilterProducts({ onFilterChange, onCategoryChange }) {
     <>
       <h2 className="text-xl font-bold mb-3">Filter Products</h2>
       <input
-        className="py-1 px-2 border border-gray-300 rounded outline-none"
+        className="py-1 max-w-40 px-2 border border-gray-300 rounded outline-none"
         type="text"
         placeholder="Enter filter"
         onChange={ (e) => onFilterChange(e.target.value) }
       />
       <select
-        className="ml-2 py-1 border rounded-md"
+        className="ml-2 py-1 h-9 px-1 bg-transparent border outline-none rounded-md"
         onChange={ (e) => onCategoryChange(e.target.value) }
       >
         <option value="name">Name</option>
