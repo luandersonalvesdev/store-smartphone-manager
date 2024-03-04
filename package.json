@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:api": "cd backend && npm run test",
+    "test:api:coverage": "cd backend && npm run test:coverage",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down -v"
   },

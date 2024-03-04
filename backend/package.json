@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/**/*.test.js",
+    "test:coverage": "nyc npm test",
     "dev": "nodemon ./api/server.js",
     "start": "node ./api/server.js",
     "vercel-build": "npx sequelize-cli db:migrate",
@@ -20,6 +21,7 @@
     "express": "^4.18.3",
     "joi": "^17.12.2",
     "jsonwebtoken": "^9.0.2",
+    "nyc": "^15.1.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.1"
