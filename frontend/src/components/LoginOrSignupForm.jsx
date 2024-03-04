@@ -41,6 +41,11 @@ export default function LoginOrSignupForm() {
       });
     }
   };
+
+  const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
+
+  console.log(errors);
+
   return (
     <div className="bg-gray-50 shadow-sm rounded-t-xl px-8 py-8">
       <h2 className="opacity-80 text-4xl mb-10 font-semibold">
@@ -120,8 +125,9 @@ export default function LoginOrSignupForm() {
         <button
           className="
             w-full bg-gunmetal hover:brightness-90 text-white font-semibold py-2 px-4
-            rounded duration-300 mt-2"
-          disabled={ isSubmitting }
+            rounded duration-300 mt-2 cursor-pointer disabled:cursor-not-allowed
+            disabled:opacity-40"
+          disabled={ isButtonDisabled }
           type="submit"
         >
           {

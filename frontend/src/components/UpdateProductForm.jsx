@@ -30,6 +30,8 @@ export default function UpdateProductForm(
     },
   });
 
+  const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
+
   const onSubmit = async (data) => {
     try {
       const response = await updateProduct(data, id);
@@ -50,13 +52,13 @@ export default function UpdateProductForm(
 
   return (
     <form
-      className="mt-2"
+      className="flex flex-col mt-2 gap-1"
       onSubmit={ handleSubmit(onSubmit) }
     >
       <div>
         <input
           className="w-full py-1 px-2 border border-gray-300 rounded outline-none
-          placeholder:text-red-400 placeholder:italic placeholder:text-opacity-50"
+          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
           { ...register('name') }
           type="text"
           placeholder={ errors.name?.message }
@@ -64,7 +66,8 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
+          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
           { ...register('brand') }
           type="text"
           placeholder={ errors.brand?.message }
@@ -72,7 +75,8 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
+          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
           { ...register('model') }
           type="text"
           placeholder={ errors.model?.message }
@@ -80,7 +84,8 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
+          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
           { ...register('color') }
           type="text"
           placeholder={ errors.color?.message }
@@ -88,7 +93,8 @@ export default function UpdateProductForm(
       </div>
       <div>
         <input
-          className="w-full py-1 px-2 border border-gray-300 rounded outline-none"
+          className="w-full py-1 px-2 border border-gray-300 rounded outline-none
+          placeholder:text-red-500 placeholder:italic placeholder:text-opacity-50"
           { ...register('price', {
             setValueAs: (value) => parseFloat(value),
           }) }
@@ -99,8 +105,9 @@ export default function UpdateProductForm(
       </div>
       <button
         className="mt-2 bg-green-500 text-white hover:brightness-105 duration-300
-        rounded px-6 py-1 text-center text-wrap shadow-md w-full font-bold"
-        disabled={ isSubmitting }
+        rounded px-6 py-1 text-center text-wrap shadow-md w-full font-bold cursor-pointer
+        disabled:cursor-not-allowed disabled:opacity-40"
+        disabled={ isButtonDisabled }
         type="submit"
       >
         {isSubmitting ? 'Saving...' : 'Save'}

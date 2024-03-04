@@ -26,7 +26,7 @@ export default function CreateProductForm() {
       const response = await createProduct(data);
       const createdProduct = response.data;
       setAllProducts((prev) => [...prev, createdProduct]);
-      // reset();
+      reset();
     } catch (error) {
       window.location.reload();
       setError('root', {
@@ -36,7 +36,7 @@ export default function CreateProductForm() {
     }
   };
 
-  const isButtonDisabled = Object.keys(errors).length > 0 || isSubmitting;
+  const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
 
   return (
     <div className="mt-6 mx-5 p-5 flex flex-col border rounded-lg">
@@ -55,7 +55,7 @@ export default function CreateProductForm() {
             </label>
             <input
               className="max-w-52 py-1 px-2 border border-gray-300 rounded outline-none
-            placeholder:text-red-300"
+            placeholder:text-red-300 placeholder:italic placeholder:text-opacity-85"
               { ...register('name') }
               type="text"
               id="name"
@@ -71,7 +71,7 @@ export default function CreateProductForm() {
             </label>
             <input
               className="max-w-52 py-1 px-2 border border-gray-300 rounded outline-none
-            placeholder:text-red-300"
+            placeholder:text-red-300 placeholder:italic placeholder:text-opacity-85"
               { ...register('brand') }
               type="text"
               id="brand"
@@ -87,7 +87,7 @@ export default function CreateProductForm() {
             </label>
             <input
               className="max-w-52 py-1 px-2 border border-gray-300 rounded outline-none
-            placeholder:text-red-300"
+            placeholder:text-red-300 placeholder:italic placeholder:text-opacity-85"
               { ...register('model') }
               type="text"
               id="model"
@@ -103,7 +103,7 @@ export default function CreateProductForm() {
             </label>
             <input
               className="max-w-52 py-1 px-2 border border-gray-300 rounded outline-none
-            placeholder:text-red-300"
+            placeholder:text-red-300 placeholder:italic placeholder:text-opacity-85"
               { ...register('color') }
               type="text"
               id="color"
@@ -119,7 +119,7 @@ export default function CreateProductForm() {
             </label>
             <input
               className="max-w-52 py-1 px-2 border border-gray-300 rounded outline-none
-            placeholder:text-red-300"
+            placeholder:text-red-300 placeholder:italic placeholder:text-opacity-85"
               { ...register('price', {
                 setValueAs: (value) => parseFloat(value),
               }) }
