@@ -15,6 +15,7 @@ export default function LoginOrSignupForm() {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: {
       errors,
       isSubmitting,
@@ -39,6 +40,9 @@ export default function LoginOrSignupForm() {
       localStorage.setItem('smartphone-manager-token', token);
       return navigate('/dashboard');
     } catch (error) {
+      reset({
+        password: '',
+      });
       setError('root', {
         type: 'custom',
         message: error.response.data.message,
