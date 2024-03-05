@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
 import useCreateProduct from '../hooks/useCreateProduct';
@@ -32,6 +33,7 @@ export default function CreateProductForm() {
       const createdProduct = response.data;
       setAllProducts((prev) => [...prev, createdProduct]);
       reset();
+      toast.success(`${createdProduct.name} created successfully!`);
     } catch (error) {
       window.location.reload();
       setError('root', {

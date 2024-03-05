@@ -12,6 +12,7 @@ import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import authRouteLoader from './utils/authRouteLoader';
 import notAuthRouteLoader from './utils/notAuthRouteLoader';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {

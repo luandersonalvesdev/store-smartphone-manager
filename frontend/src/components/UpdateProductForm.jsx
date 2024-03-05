@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
 import ProptTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { ProductsContext } from '../contexts/ProductsContext';
 import zProductSchema from '../schemas/product.zschema';
 import useUpdateProduct from '../hooks/useUpdateProduct';
@@ -43,6 +44,7 @@ export default function UpdateProductForm(
         const updatedProd = response.data;
         return prev.map((prod) => (prod.id === updatedProd.id ? updatedProd : prod));
       });
+      toast.success(`${data.name} updated successfully!`);
     } catch (err) {
       window.location.reload();
       setError('root', {
