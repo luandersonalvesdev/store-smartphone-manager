@@ -15,7 +15,6 @@ const jwtValidation = (req, res, next) => {
     req.payload = payload;
     next();
   } catch (error) {
-    console.log(error);
     return res.status(httpResponseMapper(UNAUTHORIZED)).json({
       error: 'Unauthorized',
       message: 'Expired or invalid token',
