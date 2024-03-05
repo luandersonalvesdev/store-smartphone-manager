@@ -2,14 +2,15 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
-const { Product } = require('../../api/models');
+const { Product, sequelize } = require('../../api/models');
 const jwt = require('jsonwebtoken');
 const app = require('../../api/app');
 const {
   PRODUCTS_FROM_DB_MOCK, GET_ALL_PRODUCTS_ERROR_NOT_TOKEN, GET_ALL_PRODUCTS_ERROR_INVALID_TOKEN, PRODUCT_FORM_STRUCTURE_1_MOCK,
   RETURN_PRODUCT_CREATE_STRUCTURE_1_MOCK, SUCCESS_CREATE_PRODUCT_STRUCTURE_1, PRODUCT_FORM_STRUCTURE_2_MOCK,
-  RETURN_PRODUCT_CREATE_STRUCTURE_3_MOCK, PRODUCT_FORM_STRUCTURE_3_MOCK, SUCCESS_CREATE_PRODUCT_STRUCTURE_2,
-  RETURN_PRODUCT_CREATE_STRUCTURE_1_OTHER_VALUES_MOCK, SUCCESS_UPDATE_PRODUCT_STRUCTURE_1, PRODUCT_FROM_DB_MOCK, SUCCESS_DELETE_PRODUCT_MOCK
+  PRODUCT_FORM_STRUCTURE_3_MOCK, SUCCESS_UPDATE_PRODUCT_STRUCTURE_1, PRODUCT_FROM_DB_MOCK, SUCCESS_DELETE_PRODUCT_MOCK,
+  PRODUCT_INVALID_FORM_STRUCTURE_1_MOCK, DATA_VALIDATION_MOCK, PRODUCT_INVALID_FORM_STRUCTURE_3_MOCK, DATA_VALIDATION_STRUCTURE_3_MOCK,
+  SUCCESS_CREATE_PRODUCT_STRUCTURE_3, PRODUCT_UPDATE_INVALID_FORM_MOCK
 } = require('../mocks/product.mock');
 const {
   USER_PAYLOAD_RETURN_MOCK, TOKEN_MOCK
@@ -84,6 +85,46 @@ describe('Dashboard tests', function() {
       expect(response.status).to.be.equal(SUCCESS_CREATE_PRODUCT_STRUCTURE_1.status);
       expect(response.body).to.be.deep.equal(SUCCESS_CREATE_PRODUCT_STRUCTURE_1.data);
     });
+
+    it('SUCCESS create product - structure 3', async function() {
+      sinon.stub(jwt, 'verify').returns(USER_PAYLOAD_RETURN_MOCK);
+      sinon.stub(Product, 'create').resolves(RETURN_PRODUCT_CREATE_STRUCTURE_1_MOCK);
+      sinon.stub(sequelize, 'transaction').callsFake(async (callback) => {
+        return callback();
+      });
+  
+      const response = await chai.request(app)
+        .post('/dashboard/product')
+        .set('Authorization', `Baerer ${TOKEN_MOCK}`)
+        .send(PRODUCT_FORM_STRUCTURE_3_MOCK);
+  
+      expect(response.status).to.be.equal(SUCCESS_CREATE_PRODUCT_STRUCTURE_3.status);
+      expect(response.body).to.be.deep.equal(SUCCESS_CREATE_PRODUCT_STRUCTURE_3.data);
+    });
+
+    it('DATA VALIDATION invalid data form - structure 1 and 2', async function() {
+      sinon.stub(jwt, 'verify').returns(USER_PAYLOAD_RETURN_MOCK);
+  
+      const response = await chai.request(app)
+        .post('/dashboard/product')
+        .set('Authorization', `Baerer ${TOKEN_MOCK}`)
+        .send(PRODUCT_INVALID_FORM_STRUCTURE_1_MOCK);
+  
+      expect(response.status).to.be.equal(DATA_VALIDATION_MOCK.status);
+      expect(response.body).to.be.deep.equal(DATA_VALIDATION_MOCK.data);
+    });
+
+    it('DATA VALIDATION invalid data form - structure 3', async function() {
+      sinon.stub(jwt, 'verify').returns(USER_PAYLOAD_RETURN_MOCK);
+  
+      const response = await chai.request(app)
+        .post('/dashboard/product')
+        .set('Authorization', `Baerer ${TOKEN_MOCK}`)
+        .send(PRODUCT_INVALID_FORM_STRUCTURE_3_MOCK);
+  
+      expect(response.status).to.be.equal(DATA_VALIDATION_STRUCTURE_3_MOCK.status);
+      expect(response.body).to.be.deep.equal(DATA_VALIDATION_STRUCTURE_3_MOCK.data);
+    });
   });
 
   describe('UPDATE cases', function() {
@@ -98,6 +139,18 @@ describe('Dashboard tests', function() {
   
       expect(response.status).to.be.equal(SUCCESS_UPDATE_PRODUCT_STRUCTURE_1.status);
       expect(response.body).to.be.deep.equal(SUCCESS_UPDATE_PRODUCT_STRUCTURE_1.data);
+    });
+
+    it('SUCCESS update product', async function() {
+      sinon.stub(jwt, 'verify').returns(USER_PAYLOAD_RETURN_MOCK);
+  
+      const response = await chai.request(app)
+        .put('/dashboard/product')
+        .set('Authorization', `Baerer ${TOKEN_MOCK}`)
+        .send(PRODUCT_UPDATE_INVALID_FORM_MOCK);
+  
+      expect(response.status).to.be.equal(DATA_VALIDATION_MOCK.status);
+      expect(response.body).to.be.deep.equal(DATA_VALIDATION_MOCK.data);
     });
   });
 
