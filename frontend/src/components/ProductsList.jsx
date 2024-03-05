@@ -20,7 +20,7 @@ export default function ProductsList() {
         allProducts.length !== 0
         && (
           <div
-            className="flex flex-col justify-center items-center border rounded-lg mt-3
+            className="flex flex-col justify-center items-start rounded-lg mt-3
             mb-10 mx-5 p-5"
           >
             <div>
@@ -37,7 +37,7 @@ export default function ProductsList() {
                     .map((product) => {
                       return (
                         <li
-                          className="border rounded-lg py-2 px-4 max-w-52"
+                          className="border rounded-lg py-4 px-4 max-w-52"
                           key={ product.id }
                         >
                           <ProductDetails product={ product } />

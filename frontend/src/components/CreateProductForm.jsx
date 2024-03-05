@@ -45,12 +45,12 @@ export default function CreateProductForm() {
 
   return (
     <div className="mt-6 mx-5 p-5 flex flex-col border rounded-lg">
-      <h2 className="text-3xl font-semibold mb-10 text-center block">Create Product</h2>
+      <h2 className="text-3xl font-semibold mb-10 block">Create Product</h2>
       <form
-        className="flex flex-col justify-center items-center"
+        className="flex flex-col justify-center items-start"
         onSubmit={ handleSubmit(onSubmit) }
       >
-        <div className="flex flex-row flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap w-full items-start gap-2">
           <div>
             <label className={ LABEL_CSS } htmlFor="name">Name</label>
             <input

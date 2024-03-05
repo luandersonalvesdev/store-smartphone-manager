@@ -23,8 +23,11 @@ export default function ProductDetails(
               <p className="font-semibold">{name}</p>
               <p>{brand}</p>
               <p>{model}</p>
-              <p>{color}</p>
-              <p>{`${price} $`}</p>
+              <p>
+                {`${price}$ `}
+                <span className={ `text-${color.toLowerCase()}-500` }>{color}</span>
+                {' '}
+              </p>
               <button
                 className="border border-green-300 hover:bg-green-500 hover:text-white
                 py-1 px-2 rounded duration-300 mr-1 text-green-500 mt-2"
