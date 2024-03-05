@@ -120,7 +120,7 @@ export default function LoginOrSignupForm() {
             w-full bg-gunmetal hover:brightness-90 text-white font-semibold py-2 px-4
             rounded duration-300 mt-2 cursor-pointer disabled:cursor-not-allowed
             disabled:opacity-40"
-          disabled={ isButtonDisabled }
+          disabled={ isButtonDisabled || isSubmitting }
           type="submit"
         >
           {

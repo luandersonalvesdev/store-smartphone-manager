@@ -106,7 +106,7 @@ export default function UpdateProductForm(
         className="mt-2 bg-green-500 text-white hover:brightness-105 duration-300
         rounded px-6 py-1 text-center text-wrap shadow-md w-full font-bold cursor-pointer
         disabled:cursor-not-allowed disabled:opacity-40"
-        disabled={ isButtonDisabled }
+        disabled={ isButtonDisabled || isSubmitting }
         type="submit"
       >
         {isSubmitting ? <LoadingSpinner /> : 'Save'}

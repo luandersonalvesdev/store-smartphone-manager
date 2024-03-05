@@ -111,7 +111,7 @@ export default function CreateProductForm() {
           className="bg-gunmetal hover:brightness-105 py-2 px-5 rounded
           duration-300 text-white min-w-24 font-semibold mt-6 cursor-pointer
           disabled:cursor-not-allowed disabled:opacity-40"
-          disabled={ isButtonDisabled }
+          disabled={ isButtonDisabled || isSubmitting }
           type="submit"
         >
           {isSubmitting ? <LoadingSpinner /> : 'Create'}
