@@ -1,7 +1,7 @@
 const USERNAME_MOCK = 'test';
 const PASSWORD_MOCK = 'password';
 const ID_MOCK = 1;
-const TOKEN_MOCK = 'token';
+const TOKEN_MOCK = 'token.token.token';
 
 const USER_FROM_DB_MOCK = {
   id: ID_MOCK,
@@ -12,6 +12,11 @@ const USER_FROM_DB_MOCK = {
 const USER_FORM_MOCK = {
   username: USERNAME_MOCK,
   password: PASSWORD_MOCK,
+};
+
+const USER_PAYLOAD_MOCK = {
+  id: ID_MOCK,
+  username: USERNAME_MOCK,
 };
 
 const INVALID_USER_FORM_MOCK = {
@@ -38,6 +43,14 @@ const LOGIN_ERROR_USER_FORM_MOCK = {
   data: {
     error: 'Data validation',
   },
+}
+
+const LOGIN_ERROR_NOT_FOUND_USER_MOCK = {
+  status: 404,
+  data: { 
+    error: 'Not found', 
+    message: 'This username is not registered' 
+  }
 }
 
 const SIGNUP_ERROR_USER_FORM_MOCK = {
@@ -93,4 +106,6 @@ module.exports = {
   SIGNUP_SUCCESS_RESPONSE_MOCK,
   SIGNUP_ERROR_USER_FORM_MOCK,
   SIGNUP_ERROR_CONFLICT_MOCK,
+  USER_PAYLOAD_MOCK,
+  LOGIN_ERROR_NOT_FOUND_USER_MOCK,
 }

@@ -17,13 +17,13 @@ chai.use(sinonChai);
 
 const { expect } = chai;
 
-describe('User tests.', function() {
+describe('Login tests.', function() {
 
   afterEach(function () {
     sinon.restore();
   });
 
-  it('SUCCESS find user.', async function() {
+  it('SUCCESS login.', async function() {
     sinon.stub(User, 'findOne').resolves(USER_FROM_DB_MOCK);
     sinon.stub(bcrypt, 'compareSync').resolves(true);
     sinon.stub(jwt, 'sign').returns(LOGIN_SUCCESS_RESPONSE_MOCK.data.token);
