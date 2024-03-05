@@ -11,6 +11,10 @@ const USER_FROM_DB_MOCK = {
   password: PASSWORD_MOCK,
 };
 
+const USER_BY_PK = {
+  username: USERNAME_MOCK,
+}
+
 const USER_FORM_MOCK = {
   username: USERNAME_MOCK,
   password: PASSWORD_MOCK,
@@ -99,6 +103,19 @@ const SIGNUP_ERROR_CONFLICT_MOCK = {
   },
 }
 
+const USER_NOT_FOUND_MOCK = {
+  status: 404,
+  data: {
+    error: 'Not found',
+    message: 'This username is not registered',
+  },
+}
+
+const SUCCESS_USER_BY_PK_MOCK = {
+  status: 200,
+  data: USER_BY_PK
+}
+
 module.exports = {
   USER_FROM_DB_MOCK,
   USER_FORM_MOCK,
@@ -114,4 +131,7 @@ module.exports = {
   SIGNUP_ERROR_CONFLICT_MOCK,
   USER_PAYLOAD_RETURN_MOCK,
   LOGIN_ERROR_NOT_FOUND_USER_MOCK,
+  USER_BY_PK,
+  USER_NOT_FOUND_MOCK,
+  SUCCESS_USER_BY_PK_MOCK,
 }
