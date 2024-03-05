@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js",
+    "test": "mocha tests/{unit,integration}/**/*.test.js",
     "test:coverage": "nyc npm test",
     "dev": "nodemon ./api/server.js",
     "start": "node ./api/server.js",
