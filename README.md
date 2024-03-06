@@ -17,7 +17,7 @@ The application is fully deployed at [<img src="https://img.shields.io/badge/ver
   ```
   4. Inside each directory there is a `.env.example` file that you can configure manually or run the command:
   ```
-    npm setup:env
+    npm run setup:env
   ```
   5. Finally run:
   ```bash
