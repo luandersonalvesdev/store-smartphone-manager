@@ -15,7 +15,11 @@ The application is fully deployed at [<img src="https://img.shields.io/badge/ver
   ```
     npm run install:all
   ```
-  4. Finally, within the project root directory, run the following command:
+  4. Inside each directory there is a `.env.example` file that you can configure manually or run the command:
+  ```
+    npm setup:env
+  ```
+  5. Finally run:
   ```bash
     npm run docker:up
   ```
@@ -43,7 +47,7 @@ The database used was Postgres for its speed, versatility and easy use. The stru
 
 ### Create a new account
 
-![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;POST
+![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;**POST**
 
 ```
 /signup
@@ -71,7 +75,7 @@ ___
 
 ### Log into
 
-![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;POST
+![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;**POST**
 
 ```
 /login
@@ -100,7 +104,7 @@ ___
 ### Create a new product 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
-![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;POST
+![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;**POST**
 
 <details> <summary> this route accept three different structures</summary>
 
@@ -118,15 +122,13 @@ ___
 2. Second structure
 ```bash
 {
-  {
-    "name": "Xiaomi Redmi 9",
-    "price": 10000,
-    "details": {
-      "brand": "Xiaomi",
-      "model": "Redmi 9",
-      "color": "red"
-    },
-  }
+  "name": "Xiaomi Redmi 9",
+  "price": 10000,
+  "details": {
+    "brand": "Xiaomi",
+    "model": "Redmi 9",
+    "color": "red"
+  },
 }
 ```
 
@@ -248,7 +250,7 @@ ___
 ### Get all products of user 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
-![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;GET
+![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;**GET**
 
 ```
 /dashboard/product
@@ -302,7 +304,7 @@ ___
 ### Update a product 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
-![#f03c15](https://placehold.co/15x15/FCA130/FCA130.png) &nbsp;PUT
+![#f03c15](https://placehold.co/15x15/FCA130/FCA130.png) &nbsp;**PUT**
 
 ```
 /dashboard/product
@@ -339,7 +341,7 @@ ___
 ### Delete a product 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
-![#f03c15](https://placehold.co/15x15/F93E3E/F93E3E.png) &nbsp;DELETE
+![#f03c15](https://placehold.co/15x15/F93E3E/F93E3E.png) &nbsp;**DELETE**
 
 ```
 /dashboard/product/:id
@@ -359,7 +361,7 @@ ___
 ### Get a user 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
-![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;GET
+![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;**GET**
 
 ```
 /user
