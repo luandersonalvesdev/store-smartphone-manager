@@ -19,8 +19,8 @@ export default function DashboardPage() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
-        transition="Bounce"
+        theme="light"
+        transition: Slide
       />
     </main>
   );
