@@ -425,6 +425,18 @@ The Controller layer serves as the entry point for incoming requests and handles
 
 </details>
 
+## Password security
+
+<details> <summary> See more </summary> 
+
+The API use [Bcrypt](https://github.com/dcodeIO/bcrypt.js#readme) the keep your password safe even if the database have a invasion. <br>
+The database dashboard:
+
+![db-dashboard](/assets/preview-db-dashboard.png)
+
+
+</details>
+
 ## Others details
 
 Both the `/frontend` and `/backend` folders have their respective `README.md` for some more details. Visit to find out more.

@@ -17,6 +17,14 @@ If you followed all the steps described at the beginning of the main [`README.md
 - Sinon
 - Eslint
 
+## Password security
+
+The API use [Bcrypt](https://github.com/dcodeIO/bcrypt.js#readme) the keep your password safe even if the database have a invasion. <br>
+The database dashboard:
+
+![db-dashboard](/assets/preview-db-dashboard.png)
+
+
 ## API Documentation
 
 ### Create a new account
