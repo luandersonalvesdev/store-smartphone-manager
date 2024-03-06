@@ -12,6 +12,13 @@ export default defineConfig(() => {
 
   return {
     plugins: [react(), tailwindcss(), replace({ ...env })],
+    output: {
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          return 'vendor_DEV';
+        }
+      },
+    },
     server: {
       host: true,
       port: 3000,
