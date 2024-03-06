@@ -7,9 +7,11 @@ export const ProductsContext = createContext();
 
 export default function ProductsContextProvider({ children }) {
   const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       try {
         const response = await axios.get('/dashboard/product', {
           headers: {
@@ -19,6 +21,8 @@ export default function ProductsContextProvider({ children }) {
         setAllProducts(response.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -27,7 +31,8 @@ export default function ProductsContextProvider({ children }) {
   const contextValue = useMemo(() => ({
     allProducts,
     setAllProducts,
-  }), [allProducts, setAllProducts]);
+    loading,
+  }), [allProducts, setAllProducts, loading]);
 
   return (
     <ProductsContext.Provider value={ contextValue }>
