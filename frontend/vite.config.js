@@ -1,24 +1,14 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
-import replace from '@rollup/plugin-replace';
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
-  const env = {
-    'process.env.VITE_APP_BASE_URL': process.env.VITE_APP_BASE_URL,
-  };
+export default defineConfig(({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return {
-    plugins: [react(), tailwindcss(), replace({ ...env })],
-    output: {
-      manualChunks(id) {
-        if (id.includes('node_modules')) {
-          return 'vendor_DEV';
-        }
-      },
-    },
+    plugins: [react(), tailwindcss()],
     server: {
       host: true,
       port: 3000,
@@ -33,6 +23,10 @@ export default defineConfig(() => {
         reporter: ['text', 'json', 'html'],
         provider: 'v8',
       },
+    },
+    define: {
+      'process.env.PROD': `"${process.env.NODE_ENV === 'development' ? 'false' : 'true'}"`,
+      'process.env.VITE_API_BASE_URL': `"${process.env.VITE_API_BASE_URL}"`,
     },
   };
 });
