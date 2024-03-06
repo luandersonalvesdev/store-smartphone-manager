@@ -24,7 +24,10 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.get('/', (_req, res) => {
-  res.send('Server are healthy!');
+  res.send(`
+    Server are healthy!
+    <a href="https://github.com/luandersonalvesdev/store-smartphone-manager"> Click here</a> to see the documentation.
+    `);
 });
 
 app.use('/login', loginRoute);
