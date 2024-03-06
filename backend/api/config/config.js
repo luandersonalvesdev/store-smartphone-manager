@@ -10,12 +10,6 @@ const options = {
   host: process.env.PG_DB_HOST || 'localhost',
   port: process.env.PG_DB_PORT || 5432,
   dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
   dialectModule: pg,
 };
 
@@ -28,5 +22,11 @@ module.exports = {
   },
   production: {
     ...options,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   },
 };
