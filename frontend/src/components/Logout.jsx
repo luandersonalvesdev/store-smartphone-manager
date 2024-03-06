@@ -1,9 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import { removeToLs } from '../utils/localStorage';
+import { ProductsContext } from '../contexts/ProductsContext';
 
 export default function Logout() {
+  const { setAllProducts } = useContext(ProductsContext);
+
   const navigate = useNavigate();
+
   const logout = () => {
+    setAllProducts([]);
     removeToLs('smartphone-manager-token');
     navigate('/login');
   };
