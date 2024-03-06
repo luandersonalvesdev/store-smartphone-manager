@@ -45,7 +45,7 @@ The database used was Postgres for its speed, versatility and easy use. The stru
 
 ![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;POST
 
-```http
+```
 /signup
 ```
 
@@ -73,7 +73,7 @@ ___
 
 ![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;POST
 
-```http
+```
 /login
 ```
 
@@ -168,7 +168,7 @@ ___
 
 </details>
 
-```http
+```
 /dashboard/product
 ```
 
@@ -245,12 +245,12 @@ ___
 
 ___
 
-### Get all products 🔒
+### Get all products of user 🔒
 > `Token` is required on `Authorization` header. Ex: `Baerer ${token}`
 
 ![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;GET
 
-```http
+```
 /dashboard/product
 ```
 
@@ -304,7 +304,7 @@ ___
 
 ![#f03c15](https://placehold.co/15x15/FCA130/FCA130.png) &nbsp;PUT
 
-```http
+```
 /dashboard/product
 ```
 
@@ -341,7 +341,7 @@ ___
 
 ![#f03c15](https://placehold.co/15x15/F93E3E/F93E3E.png) &nbsp;DELETE
 
-```http
+```
 /dashboard/product/:id
 ```
 
@@ -361,7 +361,7 @@ ___
 
 ![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;GET
 
-```http
+```
 /user
 ```
 
@@ -378,3 +378,55 @@ ___
 </details>
 
 </details>
+
+## Tests
+
+<details> <summary>See more</summary>
+
+  The API tests were run by the `Mocha`, `Chai`, and `Sinon`. Also `nyc` librarie that test file coverage.
+  There are both integration and unit tests for better security in future updates.
+
+  ### Run
+
+  To run tests coverage use:
+  ```bash
+    npm run test:api:coverage
+  ```
+
+  If all happens well, you will see something like that:
+  ![preview-test-api-coverage](/assets/preview-test-api-coverage.png)
+
+</details>
+
+
+## Design Pattern
+
+<details> <summary> See more </summary> 
+
+### MSC Design Pattern in API Development
+#### Overview
+The MSC (Model, Service, Controller) architectural pattern provides a structured approach to building APIs by segregating responsibilities into distinct layers: Model, Service, and Controller. This separation enhances maintainability, facilitates easier troubleshooting, and promotes scalability within the application.
+
+#### Model
+The Model layer serves as the interface for database interactions. It encapsulates all database-related operations, such as querying, inserting, updating, and deleting data. By handling these tasks, the Model ensures data integrity and consistency while abstracting the database complexity from other layers.
+
+#### Service
+The Service layer encapsulates the business logic and rules of the application. It utilizes the functionalities provided by the Model layer and implements the core logic required to process requests. This layer orchestrates different operations, enforces business rules, and acts as an intermediary between the Controller and the Model.
+
+#### Controller
+The Controller layer serves as the entry point for incoming requests and handles the interaction with the client. It receives requests, processes input data, calls the appropriate Service methods, and generates responses to send back to the client. The Controller ensures that the responses adhere to the required format and contain the necessary information.
+
+#### Advantages
+- Maintainability: The separation of concerns allows for easier maintenance and updates. Each layer can be modified or expanded without affecting the others, facilitating code management.
+- Scalability: The modular structure enables easy scalability as different layers can be scaled independently based on the application's requirements.
+- Testing: The distinct layers facilitate unit testing, as each layer can be tested separately, promoting better test coverage and reliability.
+
+</details>
+
+## Others details
+
+Both the `/frontend` and `/backend` folders have their respective `README.md` for some more details. Visit to find out more.
+
+___
+
+Thank you for your attention.
