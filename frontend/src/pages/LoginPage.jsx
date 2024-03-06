@@ -20,7 +20,7 @@ export default function LoginPage() {
         draggable
         pauseOnHover
         theme="dark"
-        transition: Bounce
+        transition="Bounce"
       />
     </main>
   );
