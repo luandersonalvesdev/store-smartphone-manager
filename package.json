@@ -6,8 +6,11 @@
   "scripts": {
     "test:api": "cd backend && npm run test",
     "test:api:coverage": "cd backend && npm run test:coverage",
-    "docker:up": "docker compose up -d --build",
-    "docker:down": "docker compose down -v"
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "docker:up": "npm run docker:up:conditional",
+    "docker:down": "npm run docker:down:conditional",
+    "docker:up:conditional": "docker-compose up -d --build || docker compose up -d --build",
+    "docker:down:conditional": "docker-compose down -v || docker compose down -v"
   },
   "keywords": [],
   "author": "",
