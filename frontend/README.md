@@ -51,6 +51,6 @@ If you followed all the steps described at the beginning of the main [`README.md
 
 <details> <summary>Filter products</summary>
 
-![signup](/assets/preview-frontend-delete.png)
+![signup](/assets/preview-frontend-filter.png)
 
 </details>
