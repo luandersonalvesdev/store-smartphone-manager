@@ -20,16 +20,16 @@ export default function ProductsList() {
         loading && (
           <div className="flex flex-col justify-center items-center h-60">
             <p className="animate-pulse text-2xl font-semibold">
-              Carregando produtos...
+              Loading products...
             </p>
           </div>
         )
       }
       {
         !loading && allProducts.length === 0 && (
-          <div className="flex flex-col justify-center items-center h-60">
-            <p className="text-2xl font-medium">
-              Nenhum produto encontrado, crie um novo produto para ver aqui.
+          <div className="flex justify-center items-center h-60 mx-10 text-center">
+            <p className="text-2xl font-medium opacity-40">
+              No products found, please create to view it here.
             </p>
           </div>
         )
