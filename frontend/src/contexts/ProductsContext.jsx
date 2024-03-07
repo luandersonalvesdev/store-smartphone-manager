@@ -8,6 +8,7 @@ export const ProductsContext = createContext();
 export default function ProductsContextProvider({ children }) {
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,7 +21,7 @@ export default function ProductsContextProvider({ children }) {
         });
         setAllProducts(response.data);
       } catch (err) {
-        console.log(err);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -32,7 +33,8 @@ export default function ProductsContextProvider({ children }) {
     allProducts,
     setAllProducts,
     loading,
-  }), [allProducts, setAllProducts, loading]);
+    error,
+  }), [allProducts, setAllProducts, loading, error]);
 
   return (
     <ProductsContext.Provider value={ contextValue }>

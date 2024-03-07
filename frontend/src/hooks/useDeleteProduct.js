@@ -15,7 +15,6 @@ const useDeleteProduct = () => {
         },
       });
     } catch (err) {
-      console.log(err);
       setError(err);
     } finally {
       setLoading(false);
