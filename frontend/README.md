@@ -6,16 +6,17 @@ If you followed all the steps described at the beginning of the main [`README.md
 
 ## Technologies
 
-- Vite
-- React
-- Axios
-- Zod
-- React hook form
-- React Router Dom V6
-- React Toastify
-- Tailwind CSS
-- Post CSS
-- Eslint
+- [Docker](https://www.docker.com/)
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [Axios](https://axios-http.com/)
+- [Zod](https://zod.dev/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Router Dom V6](https://reactrouter.com/en/main)
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Post CSS](https://postcss.org/)
+- [Eslint](https://eslint.org/)
 
 ## Features
 

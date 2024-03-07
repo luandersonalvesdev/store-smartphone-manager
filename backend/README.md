@@ -6,16 +6,19 @@ If you followed all the steps described at the beginning of the main [`README.md
 
 ## Technologies
 
-- Express
-- Node
-- Nodemon
-- Joi
-- Json Web Token
-- Bcrypt JS
-- Chai
-- Mocha
-- Sinon
-- Eslint
+- [Docker](https://www.docker.com/)
+- [Express](https://expressjs.com/)
+- [Node](https://nodejs.org/en)
+- [Nodemon](https://nodemon.io/)
+- [Sequelize](https://sequelize.org/)
+- [Joi](https://joi.dev/api/?v=17.12.2)
+- [Json Web Token](https://jwt.io/)
+- [Bcrypt JS](https://github.com/dcodeIO/bcrypt.js#readme)
+- [Chai](https://www.chaijs.com/)
+- [Mocha](https://mochajs.org/)
+- [Sinon](https://sinonjs.org/)
+- [NYC](https://istanbul.js.org/)
+- [Eslint](https://eslint.org/)
 
 ## Password security
 

@@ -1,4 +1,4 @@
-# Lexart Full Stack Javascript Developer Challanger
+# Lexart Full Stack Javascript Developer Challenger
 
 This project was developed as a technical challenge for the Lexart junior full-stack developer position.
 It is a full-stack web application designed for product management.
@@ -9,14 +9,14 @@ The application is fully deployed at [<img src="https://img.shields.io/badge/ver
 
 ## Run locally
 
-  1. First of all, you need to have the installed [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
-  2. Ensure that ports 3000, 3001 and 5432 on your computer are available; otherwise, errors may occur.
+  1. First of all, you need to have the [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+  2. Ensure that ports `3000`, `3001` and `5432` on your computer are available; otherwise, errors may occur.
   3. Install all dependencies running:
-  ```
+  ```bash
     npm run install:all
   ```
   4. Inside each directory there is a `.env.example` file that you can configure manually or run the command:
-  ```
+  ```bash
     npm run setup:env
   ```
   5. Finally run:
