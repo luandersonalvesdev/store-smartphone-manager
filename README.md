@@ -4,7 +4,7 @@ This project was developed as a technical challenge for the Lexart junior full-s
 It is a full-stack web application designed for product management.
 
 ## Live Deployment 
-The application is currently deployed and accessible at [this link ↗️](https://page-store-smartphone-manager.vercel.app/dashboard).
+The application is currently deployed and accessible at [this link ↗️](https://page-store-smartphone-manager.vercel.app).
 The application is fully deployed at [<img src="https://img.shields.io/badge/vercel-000?style=for-the-badge&logo=vercel&logoColor=white">](https://vercel.com)
 
 ## Run locally
