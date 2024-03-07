@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get('/', (_req, res) => {
   res.send(`
-    Server are healthy!
+    Server is healthy!
     <a href="https://github.com/luandersonalvesdev/store-smartphone-manager"> Click here</a> to see the documentation.
     `);
 });
